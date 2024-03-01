@@ -1,0 +1,16 @@
+
+/*
+for Frontend use 
+
+PS D:\MERN project\Whatsapp clone project> cd client
+PS D:\MERN project\Whatsapp clone project\client> npm start
+
+For Backend use
+
+PS D:\MERN project\Whatsapp clone project> cd server
+PS D:\MERN project\Whatsapp clone project\server> nodemon index.js
+
+for Socket use;;
+
+PS D:\MERN project\Whatsapp clone project> cd socket
+PS D:\MERN project\Whatsapp clone project\socket> nodemon index.js*/
