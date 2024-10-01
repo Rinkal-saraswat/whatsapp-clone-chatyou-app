@@ -9,6 +9,7 @@ import { AccountContext } from "../../context/AccountProvider";
 import { addUser } from "../../service/api";
 const dialogstyle={
     height:'96%',
+    
     marginTop:'13%',
     width:'70%',
     maxWidth:'100%',
@@ -18,6 +19,7 @@ const dialogstyle={
 }
 const Component=styled(Box)`
 display:flex;
+
 `;
 const Container=styled(Box)`
  padding : 56px 0 56px 56px;

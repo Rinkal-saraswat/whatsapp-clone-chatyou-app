@@ -1,4 +1,4 @@
-import { useContext ,useEffect,useState } from 'react';
+import { useContext ,useEffect,useState,useRef } from 'react';
 import { AccountContext } from '../../../context/AccountProvider';
 import { getMessages, newMessage } from '../../../service/api';
 
@@ -7,12 +7,14 @@ import Footer from './Footer';
 import Message from './Message';
 
 const Component=styled(Box)`
-  height:75vh;                       {/*height of chat background*/}
+  height:75vh;                       {/*height of chat background 75vh */}
  overflow-y:scroll;
 
 `;
 const Container =styled(Box)`
-padding: 2px 80px;
+padding: 3px 80px;
+
+
 
 `;
 
@@ -30,7 +32,7 @@ const Messages =({person,conversation})=>{
           const [file,setFile]=useState();
           const [image,setImage]=useState('');
           const[incomingMessage,setIncomingMessage]=useState(null);
-          // const scrollref=useRef();          
+          const scrollRef=useRef();          
 
          const {account,socket, newMessageFlag,setNewMessageFlag}=useContext(AccountContext);
           useEffect(()=>{
@@ -52,13 +54,13 @@ const Messages =({person,conversation})=>{
      //react hoook effect either include conversation._id or remove depemdcy array..mtlb khali hone pr nhi chalega....video ka khali hone pr hi chl rha hai
      // y ek conversation id dega netwrok m like 62b3ed234ds...
       //const scrollRef=useRef();   
-     // useEffect(()=>{
-     //      scrollRef.current?.scrollIntoView({transition: 'smooth'})   /*...it is for to chat scrollbar initially at bottom*/
-     // },[messages])
+     useEffect(()=>{
+          scrollRef.current?.scrollIntoView({behaviour: 'smooth'})   /*...it is for to chat scrollbar initially at bottom*/
+     },[messages])
            //OR
      // useEffect(()=>{
-     //     if(scrollref.current){
-     //           scrollRef.current.scrollTop=scrollRef.current.scrollHeight;
+     //     if(scrollRef.current){
+     //           scrollRef.current.scrollTop=scrollref.current.scrollHeight;
      //     } 
      // },[messages])
 
@@ -111,8 +113,8 @@ const Messages =({person,conversation})=>{
       <Component>
 
           {
-               messages && messages.map(message=>(
-                    <Container  > 
+               messages && messages.map((message,index)=>(
+                    <Container /*ref={scrollref}*/ key={index} ref={index === messages.length - 1 ? scrollRef : null} >   {/*  ref={scrollref } is used when scrollbar wants on bottom*/ }
                          <Message message={message}  />
                          </Container>
               

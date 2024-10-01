@@ -19,6 +19,7 @@ const dialogstyle={
 }
 const Component =styled(Box)`
   display:flex;
+
  `;
  const LeftComponent=styled(Box)`
   min-width:450px;
